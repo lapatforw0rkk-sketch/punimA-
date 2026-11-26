@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ข้อมูลการเดินทาง | เที่ยวบ้านเรา</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== TRAVEL INFORMATION PAGE ===== */
+.travel-page {
+    width: min(1100px, 92%);
+    margin: 35px auto 55px;
+    color: #294b5a;
+}
+.travel-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 310px;
+    display: flex;
+    align-items: center;
+    border-radius: 24px;
+    background: linear-gradient(110deg, rgba(13,55,73,.88), rgba(13,55,73,.25)),
+                url("images/KLM.jpg") center 45% / cover no-repeat;
+    padding: 45px;
+    color: #fff;
+}
+.travel-hero-content { max-width: 650px; }
+.travel-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,.17);
+    border: 1px solid rgba(255,255,255,.35);
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+.travel-hero h1 {
+    color: #fff;
+    font-size: clamp(28px, 4vw, 43px);
+    line-height: 1.35;
+    margin: 17px 0 12px;
+}
+.travel-hero p {
+    color: #f1f7f8;
+    line-height: 1.9;
+    margin: 0;
+}
+.travel-section { margin-top: 48px; }
+.travel-section-heading { text-align: center; margin-bottom: 25px; }
+.travel-section-heading span {
+    color: #679b83;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.travel-section-heading h2 {
+    color: #24566a;
+    font-size: 27px;
+    margin: 8px 0;
+}
+.travel-section-heading p {
+    color: #71848b;
+    margin: 0;
+    line-height: 1.8;
+}
+.travel-mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 18px;
+}
+.travel-mode-card {
+    background: #fff;
+    border: 1px solid #e3edf0;
+    border-radius: 17px;
+    padding: 23px;
+    box-shadow: 0 7px 22px rgba(42,83,98,.06);
+}
+.travel-mode-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #e8f4f2;
+    font-size: 25px;
+    margin-bottom: 14px;
+}
+.travel-mode-card h3 { color: #285c70; margin: 0 0 9px; font-size: 19px; }
+.travel-mode-card p {
+    color: #6e8087;
+    font-size: 14px;
+    line-height: 1.85;
+    margin: 0 0 12px;
+}
+.travel-mode-card ul {
+    padding-left: 19px;
+    margin: 0;
+    color: #526d75;
+    font-size: 13px;
+    line-height: 1.9;
+}
+.travel-note {
+    background: #fff7e8;
+    border-left: 4px solid #e5b96c;
+    border-radius: 10px;
+    padding: 14px 17px;
+    color: #80663d;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 18px;
+}
+.local-travel {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 24px;
+    align-items: stretch;
+}
+.local-travel-panel {
+    background: #fff;
+    border: 1px solid #e2edf0;
+    border-radius: 18px;
+    padding: 25px;
+}
+.local-travel-panel h3 { color: #285c70; margin-top: 0; }
+.local-travel-panel p, .local-travel-panel li {
+    color: #6d8087;
+    font-size: 14px;
+    line-height: 1.9;
+}
+.local-travel-panel ul { padding-left: 20px; }
+.travel-route-list { display: grid; gap: 13px; }
+.travel-route-item {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #edf1f1;
+}
+.travel-route-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.travel-route-number {
+    flex: 0 0 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e8f4f2;
+    color: #397b69;
+    font-weight: bold;
+}
+.travel-route-item strong { color: #315d6b; display: block; }
+.travel-route-item small { color: #7b8d91; line-height: 1.7; display: block; margin-top: 3px; }
+.travel-check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 13px;
+}
+.travel-check {
+    display: flex;
+    gap: 11px;
+    background: #fff;
+    border: 1px solid #e3edf0;
+    border-radius: 13px;
+    padding: 16px;
+    color: #58717a;
+    font-size: 14px;
+    line-height: 1.7;
+}
+.travel-check b { color: #315d6b; display: block; }
+.travel-footer-note {
+    text-align: center;
+    margin-top: 35px;
+    color: #71848b;
+    font-size: 13px;
+    line-height: 1.8;
+}
+@media(max-width:760px) {
+    .travel-hero { padding: 28px 23px; min-height: 290px; }
+    .travel-mode-grid { grid-template-columns: 1fr; }
+    .local-travel { grid-template-columns: 1fr; }
+    .travel-check-grid { grid-template-columns: 1fr; }
+    .travel-section-heading h2 { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <p class="site-name">เที่ยวบ้านเรา</p>
+    <nav aria-label="เมนูหลัก">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="places.html">ที่เที่ยว</a></li>
+            <li><a href="food.html">อาหาร</a></li>
+            <li><a href="plan.html">วางแผนเที่ยว</a></li>
+            <li><a href="travel.html" aria-current="page">ข้อมูลการเดินทาง</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="travel-page">
+
+    <section class="travel-hero">
+        <div class="travel-hero-content">
+            <span class="travel-eyebrow">TRAVEL GUIDE · PRACHUAP KHIRI KHAN</span>
+            <h1>เริ่มต้นการเดินทาง<br>สู่เมืองสามอ่าว</h1>
+            <p>
+                วางแผนการเดินทางให้พร้อมก่อนออกสำรวจประจวบคีรีขันธ์
+                เลือกวิธีเดินทางที่เหมาะกับคุณ และเตรียมตัวให้พร้อม
+                เพื่อให้ทุกช่วงเวลาของการท่องเที่ยวราบรื่นและน่าประทับใจ
+            </p>
+        </div>
+    </section>
+
+    <section class="travel-section">
+        <div class="travel-section-heading">
+            <span>HOW TO GET HERE</span>
+            <h2>เดินทางมาประจวบคีรีขันธ์ได้อย่างไร</h2>
+            <p>เลือกวิธีเดินทางตามความสะดวก งบประมาณ และรูปแบบการท่องเที่ยวของคุณ</p>
+        </div>
+
+        <div class="travel-mode-grid">
+
+            <article class="travel-mode-card">
+                <div class="travel-mode-icon">🚗</div>
+                <h3>รถยนต์ส่วนตัว</h3>
+                <p>
+                    เหมาะสำหรับผู้ที่ต้องการความยืดหยุ่น
+                    สามารถแวะเที่ยวหลายจุดและจัดเวลาได้ตามต้องการ
+                </p>
+                <ul>
+                    <li>ใช้เส้นทางถนนเพชรเกษม (ทางหลวงหมายเลข 4)</li>
+                    <li>ตรวจสอบสภาพรถและเส้นทางก่อนออกเดินทาง</li>
+                    <li>วางแผนจุดจอดรถของแต่ละสถานที่</li>
+                </ul>
+            </article>
+
+            <article class="travel-mode-card">
+                <div class="travel-mode-icon">🚆</div>
+                <h3>รถไฟ</h3>
+                <p>
+                    อีกหนึ่งทางเลือกสำหรับผู้ที่ชื่นชอบการเดินทางแบบสบาย ๆ
+                    และต้องการชมบรรยากาศระหว่างทาง
+                </p>
+                <ul>
+                    <li>ตรวจสอบขบวนรถและเวลาเดินทางล่วงหน้า</li>
+                    <li>ตรวจสอบสถานีต้นทางและสถานีปลายทาง</li>
+                    <li>วางแผนรถต่อจากสถานีไปยังที่พักหรือสถานที่เที่ยว</li>
+                </ul>
+            </article>
+
+            <article class="travel-mode-card">
+                <div class="travel-mode-icon">🚌</div>
+                <h3>รถโดยสารประจำทาง</h3>
+                <p>
+                    เหมาะสำหรับผู้ที่ต้องการเดินทางโดยไม่ใช้รถส่วนตัว
+                    ควรตรวจสอบจุดขึ้นรถและจุดลงรถให้ชัดเจน
+                </p>
+                <ul>
+                    <li>ตรวจสอบผู้ให้บริการและรอบรถก่อนเดินทาง</li>
+                    <li>สอบถามจุดจอดที่ใกล้จุดหมาย</li>
+                    <li>เผื่อเวลาสำหรับการต่อรถในพื้นที่</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <div class="travel-note">
+            <strong>ข้อควรรู้:</strong>
+            ตารางเดินรถ ค่าโดยสาร และเงื่อนไขการให้บริการอาจเปลี่ยนแปลงได้
+            โปรดตรวจสอบข้อมูลกับผู้ให้บริการโดยตรงก่อนออกเดินทาง
+        </div>
+    </section>
+
+    <section class="travel-section">
+        <div class="travel-section-heading">
+            <span>GETTING AROUND</span>
+            <h2>การเดินทางภายในตัวเมือง</h2>
+            <p>เมื่อมาถึงประจวบคีรีขันธ์แล้ว สามารถเลือกการเดินทางให้เหมาะกับแต่ละจุดหมาย</p>
+        </div>
+
+        <div class="local-travel">
+            <div class="local-travel-panel">
+                <h3>🚕 วิธีเดินทางในพื้นที่</h3>
+                <ul>
+                    <li><strong>รถยนต์ส่วนตัว:</strong> สะดวกสำหรับการเดินทางหลายสถานที่ในวันเดียว</li>
+                    <li><strong>รถจักรยานยนต์:</strong> เหมาะกับการเดินทางระยะใกล้ ควรสวมหมวกนิรภัยทุกครั้ง</li>
+                    <li><strong>รถรับจ้าง:</strong> สอบถามค่าโดยสารและจุดหมายให้ชัดเจนก่อนใช้บริการ</li>
+                    <li><strong>เดินเท้า:</strong> เหมาะกับการเที่ยวบริเวณใกล้กัน ควรคำนึงถึงสภาพอากาศและทางเดิน</li>
+                </ul>
+            </div>
+
+            <div class="local-travel-panel">
+                <h3>📍 จุดหมายที่ควรวางแผนเส้นทาง</h3>
+                <div class="travel-route-list">
+                    <div class="travel-route-item">
+                        <span class="travel-route-number">1</span>
+                        <div><strong>ศาลหลักเมือง</strong><small>แวะชมสถานที่สำคัญในเขตตัวเมือง</small></div>
+                    </div>
+                    <div class="travel-route-item">
+                        <span class="travel-route-number">2</span>
+                        <div><strong>เขาช่องกระจก</strong><small>เตรียมรองเท้าที่เหมาะสม หากวางแผนขึ้นชมวิว</small></div>
+                    </div>
+                    <div class="travel-route-item">
+                        <span class="travel-route-number">3</span>
+                        <div><strong>สะพานปลาและตลาดชุมชน</strong><small>เผื่อเวลาสำหรับเดินชม เลือกซื้ออาหารและของฝาก</small></div>
+                    </div>
+                    <div class="travel-route-item">
+                        <span class="travel-route-number">4</span>
+                        <div><strong>อ่าวมะนาวและเขาล้อมหมวก</strong><small>ตรวจสอบข้อกำหนดและช่วงเวลาเข้าชมก่อนเดินทาง</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="travel-section">
+        <div class="travel-section-heading">
+            <span>TRAVEL CHECKLIST</span>
+            <h2>เตรียมตัวให้พร้อมก่อนออกเดินทาง</h2>
+            <p>รายละเอียดเล็ก ๆ ที่ช่วยให้ทริปของคุณสะดวก ปลอดภัย และมีความสุขยิ่งขึ้น</p>
+        </div>
+
+        <div class="travel-check-grid">
+            <div class="travel-check">
+                <span>📱</span>
+                <div><b>ตรวจสอบเส้นทาง</b>บันทึกแผนที่และจุดหมายสำคัญไว้ล่วงหน้า</div>
+            </div>
+            <div class="travel-check">
+                <span>🌤️</span>
+                <div><b>ตรวจสอบสภาพอากาศ</b>เตรียมร่ม หมวก หรืออุปกรณ์กันแดดให้เหมาะสม</div>
+            </div>
+            <div class="travel-check">
+                <span>💧</span>
+                <div><b>เตรียมสิ่งของจำเป็น</b>พกน้ำดื่ม ยาประจำตัว และของใช้ส่วนตัว</div>
+            </div>
+            <div class="travel-check">
+                <span>🪪</span>
+                <div><b>ตรวจสอบเงื่อนไขสถานที่</b>โดยเฉพาะพื้นที่ที่มีข้อกำหนดการเข้าชม</div>
+            </div>
+            <div class="travel-check">
+                <span>🛵</span>
+                <div><b>คำนึงถึงความปลอดภัย</b>สวมหมวกนิรภัย คาดเข็มขัด และไม่ขับรถเมื่อเหนื่อยล้า</div>
+            </div>
+            <div class="travel-check">
+                <span>💵</span>
+                <div><b>เตรียมงบประมาณ</b>เผื่อค่าเดินทาง ค่าอาหาร ค่าจอดรถ และค่าใช้จ่ายฉุกเฉิน</div>
+            </div>
+        </div>
+    </section>
+
+    <p class="travel-footer-note">
+        ขอให้ทุกการเดินทางเต็มไปด้วยความสุขและความทรงจำที่ดี<br>
+        เที่ยวอย่างรับผิดชอบ เคารพสถานที่ และช่วยกันดูแลชุมชนท้องถิ่น
+    </p>
+
+</main>
+
+<footer>
+    <p>นางสาวลภัทร ญาณอรรถ | ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ</p>
+</footer>
+
+</body>
+</html>

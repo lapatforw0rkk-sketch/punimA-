@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>อาหารและวิถีชุมชน | เที่ยวบ้านเรา</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* HERO */
+
+.food-hero {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 65px 20px;
+    text-align: center;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #d8f0e6, #c5e7ed, #fff1dc);
+}
+
+.food-hero span {
+    display: inline-block;
+    background: white;
+    color: #43816a;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.food-hero h1 {
+    color: #245b49;
+    font-size: 36px;
+    margin: 18px 0 12px;
+}
+
+.food-hero p {
+    color: #607b72;
+    line-height: 1.9;
+}
+
+/* MAIN */
+
+.food-container {
+    width: min(94%, 1100px);
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin: 45px 0 30px;
+}
+
+.section-title h2 {
+    color: #285b42;
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #718078;
+    line-height: 1.8;
+}
+
+/* CARDS */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 7px 25px rgba(47,85,58,.10);
+    border: 1px solid #e7eee6;
+    transition: .3s;
+}
+
+.food-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 13px 30px rgba(47,85,58,.16);
+}
+
+.food-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.food-content {
+    padding: 25px;
+}
+
+.food-label {
+    color: #83a68a;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.food-content h3 {
+    color: #285b42;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.food-content p {
+    color: #64736a;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.food-highlight {
+    background: #f1f7ef;
+    padding: 15px 18px;
+    border-radius: 12px;
+    margin: 18px 0;
+    line-height: 1.9;
+    color: #426c4e;
+}
+
+.food-highlight strong {
+    color: #315e40;
+}
+
+.food-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #397c59;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.food-button:hover {
+    background: #245b42;
+}
+
+/* CAFE PROMOTION */
+
+.cafe-promo {
+    background: linear-gradient(135deg, #fff2dc, #fffaf1);
+    border: 1px solid #f1dfbf;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 18px 0;
+    text-align: center;
+}
+
+.cafe-promo .promo-label {
+    color: #a1743d;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cafe-promo .price {
+    color: #b36d24;
+    font-size: 29px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.free-tea {
+    display: inline-block;
+    background: #e3f0df;
+    color: #3e7748;
+    padding: 8px 17px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* POPUP */
+
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(20, 40, 30, .65);
+    backdrop-filter: blur(7px);
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+}
+
+.popup.show {
+    display: flex;
+}
+
+.popup-box {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.25);
+    animation: appear .3s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.popup-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.popup-content {
+    padding: 25px 30px 30px;
+}
+
+.popup-content h2 {
+    color: #285b42;
+    font-size: 26px;
+}
+
+.popup-content p {
+    color: #64736a;
+    line-height: 1.9;
+}
+
+.popup-detail {
+    background: #f1f7ef;
+    border-radius: 12px;
+    padding: 17px;
+    margin-top: 15px;
+    color: #426c4e;
+    line-height: 1.9;
+}
+
+.popup-price {
+    text-align: center;
+    background: #fff4df;
+    padding: 20px;
+    margin-top: 18px;
+    border-radius: 13px;
+    color: #a36a2e;
+}
+
+.popup-price strong {
+    font-size: 28px;
+}
+
+.close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #285b42;
+    font-size: 27px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.close-button:hover {
+    background: #e3f0df;
+}
+
+body.popup-open {
+    overflow: hidden;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 55px;
+    padding: 25px;
+    text-align: center;
+    background: #add495;
+    color: #244c36;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 700px) {
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-hero {
+        padding: 45px 18px;
+        margin: 20px 12px;
+    }
+
+    .food-hero h1 {
+        font-size: 28px;
+    }
+
+    .food-card img {
+        height: 230px;
+    }
+
+    .popup-box img {
+        height: 220px;
+    }
+
+    .popup-content {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <p class="site-name">เที่ยวบ้านเรา</p>
+
+    <nav aria-label="เมนูหลัก">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="places.html">ที่เที่ยว</a></li>
+            <li><a href="food.html" aria-current="page">อาหาร</a></li>
+            <li><a href="plan.html">วางแผนเที่ยว</a></li>
+            <li><a href="travel.html">ข้อมูลการเดินทาง</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="food-hero">
+
+    <span>LOCAL FOOD & COMMUNITY</span>
+
+    <h1>อิ่มอร่อยกับเสน่ห์ท้องถิ่น</h1>
+
+    <p>
+        เที่ยวประจวบฯ ทั้งที อย่าพลาดสัมผัสรสชาติและวิถีชีวิตของคนในชุมชน
+        <br>
+        แวะเดินตลาด ชิมของอร่อย และพักเติมความสุขระหว่างทาง
+    </p>
+
+</section>
+
+<main class="food-container">
+
+    <section class="section-title">
+
+        <h2>แวะชิม แวะเที่ยว ในแบบคนท้องถิ่น</h2>
+
+        <p>
+            สองจุดแวะที่อยากชวนให้คุณมาสัมผัส
+            ทั้งบรรยากาศตลาดและความอร่อยแบบเป็นกันเอง
+        </p>
+
+    </section>
+
+    <section class="food-grid">
+
+        <!-- MARKET -->
+
+        <article class="food-card">
+
+            <img src="images/market1.jpg"
+                 alt="ตลาดชุมชน">
+
+            <div class="food-content">
+
+                <span class="food-label">LOCAL MARKET</span>
+
+                <h3>🛍️ ตลาดชุมชน</h3>
+
+                <p>
+                    ชวนมาเดินเล่นท่ามกลางบรรยากาศตลาดท้องถิ่น
+                    พบกับสีสันของอาหารพื้นบ้าน ขนม ของกิน
+                    และสินค้าจากชุมชน
+                    เพลิดเพลินกับการเลือกซื้อของอร่อย
+                    พร้อมสัมผัสวิถีชีวิตที่อบอุ่นและเป็นกันเอง
+                </p>
+
+                <div class="food-highlight">
+                    <strong>✨ กิจกรรมที่ไม่ควรพลาด</strong><br>
+                    • เดินชมบรรยากาศตลาด<br>
+                    • เลือกชิมอาหารและขนมท้องถิ่น<br>
+                    • เลือกซื้อของฝากจากชุมชน
+                </div>
+
+                <button class="food-button"
+                        onclick="openPopup('marketPopup')">
+                    ดูรายละเอียดตลาด →
+                </button>
+
+            </div>
+        </article>
+
+        <!-- CAFE -->
+
+        <article class="food-card">
+
+            <img src="images/pic2.png"
+                 alt="ร้านต่ายกาแฟโบราณ">
+
+            <div class="food-content">
+
+                <span class="food-label">LOCAL CAFE</span>
+
+                <h3>☕ ร้านต่ายกาแฟโบราณ</h3>
+
+                <p>
+                    แวะพักเติมพลังระหว่างการเดินทาง
+                    กับร้านกาแฟท้องถิ่นบรรยากาศเป็นกันเอง
+                    ลองชิมไข่ลวกร้อน ๆ คู่กับเครื่องดื่มแก้วโปรด
+                    เติมความสุขเล็ก ๆ ให้วันท่องเที่ยวของคุณ
+                </p>
+
+                <div class="food-highlight">
+                    <strong>🍳 เมนูแนะนำ</strong><br>
+                    ไข่ลวกร้อน ๆ เหมาะสำหรับมื้อเช้า
+                </div>
+
+                <div class="cafe-promo">
+                    <div class="promo-label">SPECIAL PRICE</div>
+                    <div class="price">ไข่ลวก 20 บาท</div>
+                    <span class="free-tea">🍵 พร้อมน้ำชาฟรี!</span>
+                </div>
+
+                <button class="food-button"
+                        onclick="openPopup('cafePopup')">
+                    ดูรายละเอียดร้าน →
+                </button>
+
+            </div>
+        </article>
+
+    </section>
+
+    <section class="section-title">
+        <h2>ความสุขระหว่างทาง เริ่มต้นได้จากเรื่องเล็ก ๆ</h2>
+        <p>
+            สนับสนุนร้านค้าและชุมชนท้องถิ่น
+            แล้วเก็บความประทับใจกลับไปพร้อมกับการเดินทาง
+        </p>
+    </section>
+
+</main>
+
+<!-- POPUP ตลาดชุมชน -->
+
+<div class="popup" id="marketPopup"
+     onclick="closeOutside(event, 'marketPopup')">
+
+    <div class="popup-box">
+
+        <button class="close-button"
+                onclick="closePopup('marketPopup')">×</button>
+
+        <img src="images/market1.jpg" alt="ตลาดชุมชน">
+
+        <div class="popup-content">
+
+            <span class="food-label">LOCAL MARKET</span>
+
+            <h2>🛍️ ตลาดชุมชน</h2>
+
+            <p>
+                มาสัมผัสบรรยากาศตลาดท้องถิ่น
+                ที่เต็มไปด้วยสีสันและความมีชีวิตชีวา
+                เลือกชมอาหารพื้นบ้าน ขนม และสินค้าจากชุมชน
+                พร้อมเพลิดเพลินกับวิถีชีวิตของผู้คนในพื้นที่
+            </p>
+
+            <div class="popup-detail">
+                <strong>✨ สิ่งที่อยากชวนให้ลอง</strong><br>
+                • เดินชมตลาดและเลือกซื้อสินค้า<br>
+                • ชิมอาหารและขนมท้องถิ่น<br>
+                • เลือกซื้อของฝากกลับบ้าน<br>
+                • สนับสนุนสินค้าจากผู้ค้าในชุมชน
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- POPUP ร้านต่ายกาแฟโบราณ -->
+
+<div class="popup" id="cafePopup"
+     onclick="closeOutside(event, 'cafePopup')">
+
+    <div class="popup-box">
+
+        <button class="close-button"
+                onclick="closePopup('cafePopup')">×</button>
+
+        <img src="images/pic2.png"
+             alt="ร้านต่ายกาแฟโบราณและไข่ลวก">
+
+        <div class="popup-content">
+
+            <span class="food-label">LOCAL CAFE</span>
+
+            <h2>☕ ร้านต่ายกาแฟโบราณ</h2>
+
+            <p>
+                อีกหนึ่งจุดแวะพักเติมความสุขระหว่างเที่ยว
+                สัมผัสบรรยากาศร้านกาแฟท้องถิ่นแบบเป็นกันเอง
+                ลองชิมไข่ลวกร้อน ๆ คู่กับเครื่องดื่มแก้วโปรด
+                เหมาะสำหรับแวะพักในช่วงเช้า
+            </p>
+
+            <div class="popup-detail">
+                <strong>🍳 เมนูแนะนำ</strong><br>
+                ไข่ลวกร้อน ๆ พร้อมเครื่องดื่มที่คุณชื่นชอบ
+            </div>
+
+            <div class="popup-price">
+                SPECIAL PRICE<br>
+                <strong>ไข่ลวก 20 บาท</strong><br>
+                🍵 พร้อมน้ำชาฟรี!
+            </div>
+
+            <p style="text-align:center;">
+                แวะมาสัมผัสความอร่อยและความเป็นกันเอง
+                ของร้านท้องถิ่นกันนะคะ ♡
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT POPUP -->
+
+<script>
+
+function openPopup(id) {
+    document.getElementById(id).classList.add("show");
+    document.body.classList.add("popup-open");
+}
+
+function closePopup(id) {
+    document.getElementById(id).classList.remove("show");
+    document.body.classList.remove("popup-open");
+}
+
+function closeOutside(event, id) {
+    if (event.target.id === id) {
+        closePopup(id);
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        document.querySelectorAll(".popup.show").forEach(function(popup) {
+            closePopup(popup.id);
+        });
+    }
+});
+
+</script>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>
+        นางสาวลภัทร ญาณอรรถ |
+        ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ
+    </p>
+</footer>
+
+</body>
+</html>

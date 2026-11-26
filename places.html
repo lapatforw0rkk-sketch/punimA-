@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สถานที่ท่องเที่ยว | เที่ยวบ้านเรา</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== ตั้งค่าหน้าสถานที่ท่องเที่ยว ===== */
+
+.places-page {
+    width: min(94%, 1200px);
+    margin: 0 auto;
+}
+
+.places-hero {
+    text-align: center;
+    padding: 65px 20px;
+    margin-bottom: 35px;
+    background: linear-gradient(135deg, #d9f2f8, #b5dce9, #e5f5ed);
+    border-radius: 18px;
+}
+
+.places-hero h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    color: #174c60;
+    margin: 0 0 12px;
+}
+
+.places-hero p {
+    color: #426675;
+    font-size: 17px;
+    margin: 0;
+}
+
+.places-tagline {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 7px 18px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #26768a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* หัวข้อส่วนต่าง ๆ */
+
+.section-heading {
+    text-align: center;
+    margin: 40px 0 25px;
+}
+
+.section-heading h2 {
+    color: #174c60;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: #647b83;
+    margin: 0;
+}
+
+/* การ์ดสถานที่ */
+
+.place-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.place-card {
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(35, 85, 100, 0.10);
+    border: 1px solid #e4edf0;
+    transition: 0.3s;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(35, 85, 100, 0.17);
+}
+
+.place-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.place-content {
+    padding: 22px;
+}
+
+.place-number {
+    color: #26869a;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.place-content h3 {
+    color: #174c60;
+    font-size: 23px;
+    margin: 7px 0 12px;
+}
+
+.place-content p {
+    color: #586970;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+.place-info {
+    padding: 13px 15px;
+    background: #f0f8f8;
+    border-radius: 9px;
+    margin-bottom: 16px;
+    color: #426675;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.place-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #267c8c;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.place-button:hover {
+    background: #174c60;
+    color: white;
+}
+
+/* กล่องคำแนะนำ */
+
+.travel-tips {
+    padding: 28px;
+    background: #eaf5ef;
+    border-radius: 15px;
+    margin: 35px 0;
+}
+
+.travel-tips h2 {
+    color: #245b49;
+    margin-top: 0;
+}
+
+.travel-tips ul {
+    color: #506c60;
+    line-height: 2;
+    padding-left: 22px;
+}
+
+/* ส่วนปิดท้าย */
+
+.places-bottom {
+    text-align: center;
+    padding: 35px 20px;
+    margin: 35px 0;
+    background: #e5f3f7;
+    border-radius: 15px;
+}
+
+.places-bottom h2 {
+    color: #174c60;
+}
+
+.places-bottom p {
+    color: #526d78;
+    line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+    .place-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .places-hero {
+        padding: 45px 15px;
+    }
+
+    .place-card img {
+        height: 220px;
+    }
+
+    .place-content {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <p class="site-name">เที่ยวบ้านเรา</p>
+
+    <nav aria-label="เมนูหลัก">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="places.html" aria-current="page">ที่เที่ยว</a></li>
+            <li><a href="food.html">อาหาร</a></li>
+            <li><a href="plan.html">วางแผนเที่ยว</a></li>
+            <li><a href="travel.html">ข้อมูลการเดินทาง</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="places-page">
+
+    <!-- ===== HERO ===== -->
+    <section class="places-hero">
+
+        <span class="places-tagline"> PRACHUAP KHIRI KHAN THAILAND</span>
+
+        <h1>ค้นพบเสน่ห์เมืองสามอ่าว</h1>
+
+        <p>
+            เปิดประสบการณ์ท่องเที่ยวจังหวัดประจวบคีรีขันธ์
+            สัมผัสธรรมชาติ วิถีชีวิต และเรื่องราวท้องถิ่น
+        </p>
+
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="section-heading">
+
+        <h2>สถานที่ท่องเที่ยวแนะนำ</h2>
+
+        <p>
+            5 จุดหมายที่ไม่ควรพลาด เมื่อมาเยือนเมืองประจวบคีรีขันธ์
+        </p>
+
+    </section>
+
+    <!-- ===== PLACE CARDS ===== -->
+    <section class="place-grid">
+
+        <!-- 1 อ่าวมะนาว -->
+        <article class="place-card">
+
+            <img src="images/aomanow.jpg"
+                 alt="ชายหาดอ่าวมะนาว">
+
+            <div class="place-content">
+
+                <span class="place-number">01 / BEACH & NATURE</span>
+
+                <h3>อ่าวมะนาว</h3>
+
+                <p>
+                    ชายหาดบรรยากาศสวยงาม น้ำทะเลและแนวภูเขา
+                    สร้างทัศนียภาพที่เป็นเอกลักษณ์
+                    เหมาะสำหรับพักผ่อน เดินเล่นริมทะเล
+                    และใช้เวลาร่วมกับครอบครัว
+                </p>
+
+                <div class="place-info">
+                    <strong>ไฮไลต์</strong><br>
+                    • ชมวิวทะเลและเขาล้อมหมวก<br>
+                    • พักผ่อนและเล่นน้ำบริเวณชายหาด<br>
+                    • เรียนรู้เรื่องราวทางประวัติศาสตร์กองบิน 5
+                </div>
+
+                <a class="place-button"
+                   href="https://www.google.com/maps/search/?api=1&query=อ่าวมะนาว+ประจวบคีรีขันธ์"
+                   target="_blank" rel="noopener noreferrer">
+                    ดูตำแหน่งแผนที่ →
+                </a>
+
+            </div>
+        </article>
+
+        <!-- 2 เขาช่องกระจก -->
+        <article class="place-card">
+
+            <img src="images/Kaow.jpg"
+                 alt="เขาช่องกระจก">
+
+            <div class="place-content">
+
+                <span class="place-number">02 / VIEWPOINT</span>
+
+                <h3>เขาช่องกระจก</h3>
+
+                <p>
+                    จุดชมวิวสำคัญของเมืองประจวบคีรีขันธ์
+                    มีลักษณะเป็นภูเขาที่มีช่องทะลุคล้ายกรอบกระจก
+                    สามารถมองเห็นทิวทัศน์ของเมืองและทะเลโดยรอบ
+                </p>
+
+                <div class="place-info">
+                    <strong>ไฮไลต์</strong><br>
+                    • ชมวิวเมืองสามอ่าวจากมุมสูง<br>
+                    • สักการะพระพุทธบาทจำลอง<br>
+                    • เดินขึ้นบันได 396 ขั้น เพื่อชมทัศนียภาพ
+                </div>
+
+                <a class="place-button"
+                   href="https://www.google.com/maps/search/?api=1&query=เขาช่องกระจก+ประจวบคีรีขันธ์"
+                   target="_blank" rel="noopener noreferrer">
+                    ดูตำแหน่งแผนที่ →
+                </a>
+
+            </div>
+        </article>
+
+        <!-- 3 เขาล้อมหมวก -->
+        <article class="place-card">
+
+            <img src="images/KLM.jpg"
+                 alt="เขาล้อมหมวก">
+
+            <div class="place-content">
+
+                <span class="place-number">03 / ADVENTURE</span>
+
+                <h3>เขาล้อมหมวก</h3>
+
+                <p>
+                    ภูเขาหินปูนภายในพื้นที่กองบิน 5
+                    เป็นจุดหมายสำหรับผู้ที่ชื่นชอบการผจญภัย
+                    และต้องการชมวิวทะเลเมืองประจวบคีรีขันธ์
+                    จากมุมสูงแบบกว้างไกล
+                </p>
+
+                <div class="place-info">
+                    <strong>ไฮไลต์</strong><br>
+                    • พิชิตยอดเขาสูง 902 ฟุต<br>
+                    • สักการะรอยพระพุทธบาทจำลอง<br>
+                    • ชมวิวทะเลและเมืองสามอ่าวแบบ 360 องศา<br>
+                    <strong>ข้อควรรู้:</strong> เปิดให้ขึ้นเขาเฉพาะช่วงวันที่กองบิน 5 ประกาศ
+                    ควรตรวจสอบกำหนดการก่อนเดินทาง
+                </div>
+
+                <a class="place-button"
+                   href="https://wing5.rtaf.mi.th/phichity-dekhaa"
+                   target="_blank" rel="noopener noreferrer">
+                    ตรวจสอบวันเปิดกิจกรรม →
+                </a>
+
+            </div>
+        </article>
+
+        <!-- 4 ศาลหลักเมือง -->
+        <article class="place-card">
+
+            <img src="images/lukmuang.jpg"
+                 alt="ศาลหลักเมืองประจวบคีรีขันธ์">
+
+            <div class="place-content">
+
+                <span class="place-number">04 / CULTURE & HISTORY</span>
+
+                <h3>ศาลหลักเมือง</h3>
+
+                <p>
+                    สถานที่ศักดิ์สิทธิ์คู่บ้านคู่เมือง
+                    และเป็นศูนย์รวมจิตใจของประชาชน
+                    โดดเด่นด้วยสถาปัตยกรรมที่งดงาม
+                    เหมาะสำหรับผู้ที่สนใจประวัติศาสตร์และวัฒนธรรมท้องถิ่น
+                </p>
+
+                <div class="place-info">
+                    <strong>ไฮไลต์</strong><br>
+                    • ชมสถาปัตยกรรมศิลปะแบบลพบุรี<br>
+                    • สักการะเสาหลักเมือง<br>
+                    • เรียนรู้เรื่องราวความเป็นมาของเมืองประจวบคีรีขันธ์
+                </div>
+
+                <a class="place-button"
+                   href="https://www.google.com/maps/search/?api=1&query=ศาลหลักเมือง+ประจวบคีรีขันธ์"
+                   target="_blank" rel="noopener noreferrer">
+                    ดูตำแหน่งแผนที่ →
+                </a>
+
+            </div>
+        </article>
+
+        <!-- 5 สะพานปลา -->
+        <article class="place-card">
+
+            <img src="images/sapanpla.jpg"
+                 alt="สะพานปลา">
+
+            <div class="place-content">
+
+                <span class="place-number">05 / LOCAL LIFESTYLE</span>
+
+                <h3>สะพานปลา</h3>
+
+                <p>
+                    สัมผัสบรรยากาศวิถีชีวิตชาวประมง
+                    ชมเรือประมงและกิจกรรมริมชายฝั่ง
+                    เป็นอีกหนึ่งมุมที่สะท้อนเสน่ห์ของชุมชน
+                    และความผูกพันระหว่างผู้คนกับท้องทะเล
+                </p>
+
+                <div class="place-info">
+                    <strong>ไฮไลต์</strong><br>
+                    • ชมวิถีชีวิตชาวประมงพื้นบ้าน<br>
+                    • ถ่ายภาพเรือประมงและบรรยากาศริมทะเล<br>
+                    • เรียนรู้วิถีชุมชนและอาชีพประมงท้องถิ่น
+                </div>
+
+                <a class="place-button"
+                   href="https://www.google.com/maps/search/?api=1&query=สะพานปลา+ประจวบคีรีขันธ์"
+                   target="_blank" rel="noopener noreferrer">
+                    ดูตำแหน่งแผนที่ →
+                </a>
+
+            </div>
+        </article>
+
+    </section>
+
+    <!-- ===== TRAVEL TIPS ===== -->
+    <section class="travel-tips">
+
+        <h2>คำแนะนำก่อนออกเดินทาง</h2>
+
+        <ul>
+            <li>ตรวจสอบสภาพอากาศและวางแผนการเดินทางล่วงหน้า</li>
+            <li>เตรียมน้ำดื่ม หมวก และอุปกรณ์ป้องกันแสงแดด</li>
+            <li>สวมรองเท้าที่เหมาะสม โดยเฉพาะการเดินขึ้นเขา</li>
+            <li>ตรวจสอบประกาศการเปิดพื้นที่ก่อนเดินทางไปเขาล้อมหมวก</li>
+            <li>ช่วยกันรักษาความสะอาดและไม่ทิ้งขยะในแหล่งท่องเที่ยว</li>
+            <li>เคารพกฎระเบียบของสถานที่และชุมชนท้องถิ่น</li>
+        </ul>
+
+    </section>
+
+    <!-- ===== BOTTOM ===== -->
+    <section class="places-bottom">
+
+        <h2>ประจวบคีรีขันธ์...มากกว่าการเดินทาง</h2>
+
+        <p>
+            เพราะทุกสถานที่มีเรื่องราว ทุกเส้นทางมีความประทับใจ
+            มาร่วมค้นพบเสน่ห์ของเมืองสามอ่าวไปด้วยกัน
+        </p>
+
+        <a class="place-button" href="plan.html">
+            วางแผนท่องเที่ยว →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>
+        นางสาวลภัทร ญาณอรรถ |
+        ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ
+    </p>
+</footer>
+
+</body>
+</html>

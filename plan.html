@@ -1,0 +1,1263 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>วางแผนท่องเที่ยว | เที่ยวบ้านเรา</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.plan-page {
+    font-family: Tahoma, sans-serif;
+    color: #344b43;
+    background: #eaf5f8;
+    padding-bottom: 50px;
+}
+
+.plan-hero {
+    max-width: 1200px;
+    margin: 28px auto;
+    padding: 75px 25px;
+    border-radius: 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #d5eee7, #c3e3eb, #fff0dc);
+}
+
+.plan-hero .eyebrow {
+    display: inline-block;
+    background: white;
+    color: #467b68;
+    padding: 9px 20px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.plan-hero h1 {
+    color: #205746;
+    font-size: 38px;
+    margin: 20px 0 12px;
+}
+
+.plan-hero p {
+    color: #637c73;
+    line-height: 1.9;
+    max-width: 720px;
+    margin: auto;
+}
+
+.plan-container {
+    width: min(94%, 1080px);
+    margin: auto;
+}
+
+.plan-heading {
+    text-align: center;
+    margin: 55px 0 30px;
+}
+
+.plan-heading span {
+    color: #77a28a;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.plan-heading h2 {
+    color: #285b42;
+    font-size: 29px;
+    margin: 10px 0;
+}
+
+.plan-heading p {
+    color: #788a80;
+    line-height: 1.8;
+}
+
+/* TRIP OVERVIEW */
+
+.trip-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.overview-card {
+    background: white;
+    border-radius: 15px;
+    padding: 22px 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(47,85,58,.07);
+}
+
+.overview-card .symbol {
+    font-size: 26px;
+}
+
+.overview-card strong {
+    display: block;
+    color: #315f49;
+    margin: 8px 0 5px;
+}
+
+.overview-card small {
+    color: #7d8e84;
+}
+
+/* ROUTE MAP */
+
+.route-map {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 6px 22px rgba(47,85,58,.08);
+    margin: 30px 0;
+}
+
+.route-map h3 {
+    color: #285b42;
+    margin-top: 0;
+}
+
+.route-map img {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    max-height: 650px;
+    object-fit: contain;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+
+.route-caption {
+    text-align: center;
+    color: #7b8d82;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TIMELINE */
+
+.timeline {
+    position: relative;
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 105px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: #b9d9c5;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    gap: 40px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.timeline-time {
+    text-align: right;
+    color: #397c59;
+    font-weight: bold;
+    padding-top: 22px;
+    font-size: 15px;
+}
+
+.timeline-content {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    padding: 22px 25px;
+    box-shadow: 0 5px 18px rgba(47,85,58,.07);
+}
+
+.timeline-content::before {
+    content: "";
+    position: absolute;
+    left: -49px;
+    top: 25px;
+    width: 15px;
+    height: 15px;
+    background: #5c9b74;
+    border: 4px solid #eaf5f8;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content .location-label {
+    color: #82a68b;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.timeline-content h3 {
+    color: #285b42;
+    margin: 9px 0;
+    font-size: 21px;
+}
+
+.timeline-content p {
+    color: #687a70;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 10px;
+}
+
+.timeline-content .tip {
+    background: #f1f7ef;
+    border-left: 4px solid #81bd91;
+    padding: 11px 14px;
+    border-radius: 7px;
+    color: #4d7258;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TRAVEL TIPS */
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.tip-card {
+    background: white;
+    padding: 23px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(47,85,58,.06);
+}
+
+.tip-card h3 {
+    color: #315f49;
+    margin-top: 0;
+}
+
+.tip-card p {
+    color: #6d7e74;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 0;
+}
+
+/* CHECKLIST */
+
+.checklist {
+    background: linear-gradient(135deg, #f2f8ed, #ffffff);
+    border: 1px solid #e1eddf;
+    padding: 28px;
+    border-radius: 18px;
+    margin-top: 30px;
+}
+
+.checklist h3 {
+    color: #315f49;
+    margin-top: 0;
+}
+
+.checklist label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    color: #63776b;
+    border-bottom: 1px solid #e7eee5;
+    cursor: pointer;
+}
+
+.checklist input {
+    accent-color: #4c9567;
+    width: 17px;
+    height: 17px;
+}
+
+/* NOTE */
+
+.plan-note {
+    margin-top: 35px;
+    padding: 22px;
+    border-radius: 14px;
+    background: #fff4df;
+    color: #876b43;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.plan-note strong {
+    color: #9b713c;
+}
+
+/* FOOTER */
+
+.plan-footer {
+    background: #add495;
+    padding: 25px;
+    text-align: center;
+    color: #244c36;
+    margin-top: 40px;
+}
+
+@media(max-width:700px) {
+    .plan-hero {
+        margin: 15px;
+        padding: 48px 20px;
+    }
+
+    .plan-hero h1 {
+        font-size: 28px;
+    }
+
+    .trip-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        margin-left: 0;
+    }
+
+    .timeline::before {
+        left: 70px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 55px 1fr;
+        gap: 30px;
+    }
+
+    .timeline-time {
+        font-size: 12px;
+    }
+
+    .timeline-content::before {
+        left: -39px;
+    }
+
+    .timeline-content {
+        padding: 18px;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-heading h2 {
+        font-size: 24px;
+    }
+}
+
+
+/* ===== INTERACTIVE TRIP PLANNER ===== */
+.interactive-planner {
+    background: #fff;
+    border: 1px solid #e1eee5;
+    border-radius: 22px;
+    padding: 28px;
+    margin: 35px 0;
+    box-shadow: 0 8px 25px rgba(47,85,58,.07);
+}
+.interactive-planner .builder-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.interactive-planner .builder-heading span {
+    color: #78a58a;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.interactive-planner .builder-heading h2 {
+    color: #285b42;
+    margin: 9px 0;
+    font-size: 27px;
+}
+.interactive-planner .builder-heading p {
+    color: #788a80;
+    line-height: 1.8;
+}
+.planner-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.planner-control label {
+    display: block;
+    color: #315f49;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.planner-control input,
+.planner-control select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #dce9df;
+    border-radius: 10px;
+    background: #f8fbf8;
+    color: #40594b;
+    font: inherit;
+}
+.planner-choice-title {
+    color: #315f49;
+    margin: 22px 0 12px;
+}
+.planner-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+.planner-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 14px;
+    border: 1px solid #e0ebe2;
+    border-radius: 12px;
+    background: #fbfdfb;
+    cursor: pointer;
+    transition: .2s;
+}
+.planner-choice:hover {
+    border-color: #83b895;
+    background: #f2f8f2;
+}
+.planner-choice input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: #4d9368;
+    flex-shrink: 0;
+}
+.planner-choice strong {
+    display: block;
+    color: #315f49;
+}
+.planner-choice small {
+    display: block;
+    color: #84948a;
+    margin-top: 4px;
+    line-height: 1.5;
+}
+.planner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+.planner-buttons button {
+    border: 0;
+    border-radius: 30px;
+    padding: 13px 23px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+.planner-create {
+    background: #397b56;
+    color: #fff;
+}
+.planner-create:hover {
+    background: #285b42;
+}
+.planner-clear {
+    background: #edf3ed;
+    color: #54715d;
+}
+.planner-output {
+    display: none;
+    margin-top: 28px;
+    padding: 23px;
+    background: #f3f8f2;
+    border: 1px solid #deebdc;
+    border-radius: 16px;
+}
+.planner-output h3 {
+    color: #285b42;
+    margin-top: 0;
+}
+.planner-output-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0 22px;
+}
+.planner-output-summary span {
+    background: #fff;
+    color: #52745c;
+    border: 1px solid #e0ebdf;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+.planner-stop {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid #dce9dc;
+}
+.planner-stop-time {
+    color: #43815b;
+    font-weight: bold;
+}
+.planner-stop-detail strong {
+    color: #315f49;
+}
+.planner-stop-detail p {
+    color: #75867a;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 5px 0 0;
+}
+.planner-alert {
+    color: #856638;
+    background: #fff5e5;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 17px;
+}
+.planner-print {
+    margin-top: 15px;
+    border: 0;
+    border-radius: 25px;
+    padding: 10px 18px;
+    background: #e3eee3;
+    color: #315f49;
+    font-weight: bold;
+    cursor: pointer;
+}
+@media(max-width:700px) {
+    .interactive-planner { padding: 20px 15px; }
+    .planner-form-grid, .planner-choice-grid { grid-template-columns: 1fr; }
+    .interactive-planner .builder-heading h2 { font-size: 23px; }
+    .planner-stop { grid-template-columns: 75px minmax(0,1fr); gap: 10px; }
+}
+@media print {
+    header, footer, .plan-hero, .plan-container > *:not(.interactive-planner),
+    .interactive-planner > *:not(.planner-output) { display: none !important; }
+    .planner-output { display: block !important; box-shadow: none; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <p class="site-name">เที่ยวบ้านเรา</p>
+
+    <nav aria-label="เมนูหลัก">
+        <ul>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li><a href="places.html">ที่เที่ยว</a></li>
+            <li><a href="food.html">อาหาร</a></li>
+            <li><a href="plan.html" aria-current="page">วางแผนเที่ยว</a></li>
+            <li><a href="travel.html">ข้อมูลการเดินทาง</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="plan-page">
+
+    <!-- HERO -->
+
+    <section class="plan-hero">
+
+        <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+
+        <h1>ออกเดินทางไปค้นพบเมืองสามอ่าว</h1>
+
+        <p>
+            วางแผนวันพักผ่อนในจังหวัดประจวบคีรีขันธ์
+            สัมผัสธรรมชาติ วิวทิวทัศน์ วัฒนธรรมท้องถิ่น
+            และรสชาติอาหารที่น่าประทับใจ
+            ให้ทุกช่วงเวลาของการเดินทางมีความหมาย
+        </p>
+
+    </section>
+
+
+    <main class="plan-container">
+
+        <!-- OVERVIEW -->
+
+        <section class="plan-heading">
+
+            <span>TRIP OVERVIEW</span>
+
+            <h2>เตรียมตัวก่อนออกเดินทาง</h2>
+
+            <p>
+                ทริปท่องเที่ยวแนะนำสำหรับผู้ที่ต้องการสัมผัสเสน่ห์
+                ของเมืองประจวบคีรีขันธ์ภายในหนึ่งวัน
+            </p>
+
+        </section>
+
+        <div class="trip-overview">
+
+            <div class="overview-card">
+                <div class="symbol">📍</div>
+                <strong>จังหวัดประจวบคีรีขันธ์</strong>
+                <small>จุดหมายปลายทาง</small>
+            </div>
+
+            <div class="overview-card">
+                <div class="symbol">☀️</div>
+                <strong>1 วัน</strong>
+                <small>รูปแบบการเดินทาง</small>
+            </div>
+
+            <div class="overview-card">
+                <div class="symbol">🚗</div>
+                <strong>รถยนต์ส่วนตัว</strong>
+                <small>รูปแบบการเดินทางที่แนะนำ</small>
+            </div>
+
+        </div>
+
+
+
+        <!-- ===== CREATE YOUR OWN TRIP ===== -->
+        <section class="interactive-planner" id="tripBuilder">
+            <div class="builder-heading">
+                <span>CREATE YOUR OWN JOURNEY</span>
+                <h2>ออกแบบแผนเที่ยวในแบบของคุณ</h2>
+                <p>เลือกวัน เวลา วิธีเดินทาง และสถานที่ที่สนใจ ระบบจะจัดตารางท่องเที่ยวให้ตามตัวเลือกของคุณ</p>
+            </div>
+
+            <div class="planner-form-grid">
+                <div class="planner-control">
+                    <label for="tripDate">📅 วันที่เดินทาง</label>
+                    <input type="date" id="tripDate">
+                </div>
+                <div class="planner-control">
+                    <label for="tripStart">🕗 เวลาเริ่มต้น</label>
+                    <input type="time" id="tripStart" value="08:00">
+                </div>
+                <div class="planner-control">
+                    <label for="tripHours">☀️ ระยะเวลาทริป</label>
+                    <select id="tripHours">
+                        <option value="4">ครึ่งวัน (4 ชั่วโมง)</option>
+                        <option value="6">6 ชั่วโมง</option>
+                        <option value="8" selected>เต็มวัน (8 ชั่วโมง)</option>
+                        <option value="10">10 ชั่วโมง</option>
+                    </select>
+                </div>
+                <div class="planner-control">
+                    <label for="tripTransport">🚗 วิธีเดินทาง</label>
+                    <select id="tripTransport">
+                        <option value="car">รถยนต์ส่วนตัว</option>
+                        <option value="motorcycle">รถจักรยานยนต์</option>
+                        <option value="public">รถโดยสาร / รถรับจ้าง</option>
+                        <option value="walk">เดินเท้า</option>
+                    </select>
+                </div>
+                <div class="planner-control">
+                    <label for="tripPace">🌿 จังหวะการเที่ยว</label>
+                    <select id="tripPace">
+                        <option value="relaxed">สบาย ๆ มีเวลาพัก</option>
+                        <option value="normal" selected>กำลังดี</option>
+                        <option value="quick">กระชับ เน้นเก็บหลายจุด</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3 class="planner-choice-title">📍 เลือกสถานที่ที่ต้องการไป</h3>
+            <p style="color:#84938a;font-size:13px;line-height:1.7;">
+                เลือกได้หลายแห่ง ระบบจะเรียงตามลำดับรายการด้านล่าง
+                และคำนวณเวลาเที่ยวชมพร้อมเวลาเผื่อเดินทางโดยประมาณ
+            </p>
+
+            <div class="planner-choice-grid">
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="ศาลหลักเมือง" data-minutes="40">
+                    <span><strong>🏛️ ศาลหลักเมือง</strong><small>สถานที่สำคัญคู่บ้านคู่เมือง • 40 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="เขาช่องกระจก" data-minutes="90">
+                    <span><strong>⛰️ เขาช่องกระจก</strong><small>ชมวิวเมืองสามอ่าว • 90 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="อ่าวมะนาว" data-minutes="90">
+                    <span><strong>🏖️ อ่าวมะนาว</strong><small>พักผ่อนริมชายหาด • 90 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="เขาล้อมหมวก" data-minutes="120">
+                    <span><strong>🧗 เขาล้อมหมวก</strong><small>กิจกรรมธรรมชาติ • 120 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="สะพานปลา" data-minutes="45">
+                    <span><strong>🎣 สะพานปลา</strong><small>ชมวิถีชีวิตชาวประมง • 45 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="ตลาดชุมชน" data-minutes="60">
+                    <span><strong>🛍️ ตลาดชุมชน</strong><small>ชิมอาหารและเลือกซื้อของฝาก • 60 นาที</small></span>
+                </label>
+                <label class="planner-choice">
+                    <input type="checkbox" name="tripPlace" value="ร้านต่ายกาแฟโบราณ" data-minutes="40">
+                    <span><strong>☕ ร้านต่ายกาแฟโบราณ</strong><small>ไข่ลวก 20 บาท พร้อมน้ำชาฟรี • 40 นาที</small></span>
+                </label>
+            </div>
+
+            <div class="planner-buttons">
+                <button type="button" class="planner-create" onclick="buildTripPlan()">✨ สร้างแผนการเดินทาง</button>
+                <button type="button" class="planner-clear" onclick="clearTripPlan()">↻ ล้างข้อมูล</button>
+            </div>
+
+            <div class="planner-output" id="tripOutput" aria-live="polite">
+                <h3>🧳 แผนการเดินทางของคุณ</h3>
+                <p id="tripIntro" style="color:#708477;line-height:1.8;"></p>
+                <div class="planner-output-summary" id="tripSummary"></div>
+                <div id="tripSchedule"></div>
+                <div class="planner-alert" id="tripNotice"></div>
+                <button type="button" class="planner-print" onclick="window.print()">🖨️ พิมพ์แผนการเดินทาง</button>
+            </div>
+        </section>
+
+
+                <!-- ROUTE MAP -->
+
+        <section class="route-map">
+
+            <h3>🗺️ เส้นทางท่องเที่ยวแนะนำ</h3>
+
+            <p>
+                วางเส้นทางให้ครอบคลุมทั้งสถานที่สำคัญ
+                จุดชมวิว ชายหาด และแหล่งท่องเที่ยวชุมชน
+            </p>
+
+            <img src="images/maptravel.jpg"
+                 alt="แผนที่เส้นทางท่องเที่ยวประจวบคีรีขันธ์">
+
+            <div class="route-caption">
+                แผนที่ประกอบการวางแผนเดินทาง
+                กรุณาตรวจสอบเส้นทางจริงก่อนออกเดินทาง
+            </div>
+
+        </section>
+
+
+        <!-- ITINERARY -->
+
+        <section class="plan-heading">
+
+            <span>ONE DAY ITINERARY</span>
+
+            <h2>กำหนดการเดินทางตลอดหนึ่งวัน</h2>
+
+            <p>
+                เก็บเกี่ยวประสบการณ์ตั้งแต่ช่วงเช้า
+                จนถึงช่วงเย็นในบรรยากาศเมืองสามอ่าว
+            </p>
+
+        </section>
+
+
+        <div class="timeline">
+
+            <!-- 08:00 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">08:00 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 01 • CULTURE</span>
+
+                    <h3>ศาลหลักเมืองประจวบคีรีขันธ์</h3>
+
+                    <p>
+                        เริ่มต้นวันด้วยการเยี่ยมชมศาลหลักเมือง
+                        สถานที่สำคัญคู่บ้านคู่เมือง
+                        สัมผัสบรรยากาศสงบงามและเรียนรู้เรื่องราว
+                        ความเป็นมาของเมืองประจวบคีรีขันธ์
+                    </p>
+
+                    <div class="tip">
+                        ✨ คำแนะนำ: แต่งกายสุภาพ และเคารพสถานที่
+                        ระหว่างเข้าชม
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 09:00 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">09:00 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 02 • VIEWPOINT</span>
+
+                    <h3>เขาช่องกระจก</h3>
+
+                    <p>
+                        แวะชมทัศนียภาพเมืองประจวบคีรีขันธ์
+                        จากมุมสูง มองเห็นแนวชายฝั่งและอ่าวต่าง ๆ
+                        พร้อมเก็บภาพความประทับใจของเมืองสามอ่าว
+                    </p>
+
+                    <div class="tip">
+                        📸 คำแนะนำ: เตรียมรองเท้าที่กระชับ
+                        และเผื่อเวลาสำหรับการเดินขึ้นลง
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 10:30 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">10:30 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 03 • NATURE</span>
+
+                    <h3>อ่าวมะนาว</h3>
+
+                    <p>
+                        พักผ่อนริมชายหาด ชื่นชมความงดงามของท้องทะเล
+                        และบรรยากาศธรรมชาติที่ผ่อนคลาย
+                        เหมาะสำหรับถ่ายภาพ เดินเล่น
+                        และใช้เวลาร่วมกับครอบครัวหรือเพื่อน
+                    </p>
+
+                    <div class="tip">
+                        🌊 คำแนะนำ: เตรียมหมวก ครีมกันแดด
+                        และรักษาความสะอาดบริเวณชายหาด
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 12:00 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">12:00 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 04 • LOCAL FOOD</span>
+
+                    <h3>แวะรับประทานอาหารและเดินตลาดชุมชน</h3>
+
+                    <p>
+                        เติมพลังด้วยอาหารท้องถิ่น
+                        พร้อมเดินชมตลาดชุมชน เลือกซื้อขนม
+                        อาหารพื้นบ้าน และของฝาก
+                        สัมผัสเสน่ห์การค้าขายและวิถีชีวิตของผู้คน
+                    </p>
+
+                    <div class="tip">
+                        🛍️ คำแนะนำ: สนับสนุนสินค้าในชุมชน
+                        และสอบถามราคาก่อนเลือกซื้อ
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 13:30 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">13:30 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 05 • LOCAL CAFE</span>
+
+                    <h3>ร้านต่ายกาแฟโบราณ</h3>
+
+                    <p>
+                        พักเติมความสดชื่นด้วยเครื่องดื่มแก้วโปรด
+                        ลองชิมไข่ลวกร้อน ๆ ในบรรยากาศร้านท้องถิ่น
+                        ที่เป็นกันเอง
+                    </p>
+
+                    <div class="tip">
+                        ☕ เมนูแนะนำ: ไข่ลวก 20 บาท
+                        พร้อมน้ำชาฟรี
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 14:30 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">14:30 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 06 • ADVENTURE</span>
+
+                    <h3>เขาล้อมหมวก</h3>
+
+                    <p>
+                        สัมผัสความงดงามของธรรมชาติและทิวทัศน์
+                        บริเวณเขาล้อมหมวก
+                        เหมาะสำหรับผู้ที่ชื่นชอบกิจกรรมกลางแจ้ง
+                        และการท่องเที่ยวเชิงธรรมชาติ
+                    </p>
+
+                    <div class="tip">
+                        ⚠️ สำคัญ: การขึ้นเขาล้อมหมวกมีเงื่อนไข
+                        และช่วงเวลาเปิดให้เข้าชมตามที่หน่วยงานกำหนด
+                        โปรดตรวจสอบการอนุญาตก่อนเดินทาง
+                        หากไม่เปิดให้ขึ้น สามารถเปลี่ยนเป็นพักผ่อน
+                        และถ่ายภาพบริเวณอ่าวมะนาวได้
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 16:30 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-time">16:30 น.</div>
+
+                <div class="timeline-content">
+
+                    <span class="location-label">STOP 07 • LOCAL LIFE</span>
+
+                    <h3>สะพานปลา</h3>
+
+                    <p>
+                        ปิดท้ายวันด้วยการแวะชมวิถีชีวิตชาวประมง
+                        สัมผัสบรรยากาศริมทะเล
+                        ชมเรือประมงและทัศนียภาพของชุมชนชายฝั่ง
+                        เก็บภาพความทรงจำก่อนจบทริป
+                    </p>
+
+                    <div class="tip">
+                        🌅 คำแนะนำ: เลือกมุมถ่ายภาพโดยไม่กีดขวาง
+                        การทำงานของชาวประมง
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- TRAVEL TIPS -->
+
+        <section class="plan-heading">
+
+            <span>TRAVEL GUIDE</span>
+
+            <h2>คำแนะนำสำหรับนักเดินทาง</h2>
+
+            <p>
+                รายละเอียดเล็ก ๆ ที่ช่วยให้การเดินทาง
+                สะดวกสบายและปลอดภัยยิ่งขึ้น
+            </p>
+
+        </section>
+
+
+        <div class="tips-grid">
+
+            <div class="tip-card">
+
+                <h3>🚗 การเดินทาง</h3>
+
+                <p>
+                    แนะนำให้วางแผนเส้นทางล่วงหน้า
+                    ตรวจสอบสภาพการจราจรและจุดจอดรถ
+                    รวมถึงเตรียมแผนการเดินทางสำรอง
+                    เพื่อให้สามารถปรับเปลี่ยนกำหนดการได้
+                </p>
+
+            </div>
+
+            <div class="tip-card">
+
+                <h3>👒 การแต่งกาย</h3>
+
+                <p>
+                    เลือกเสื้อผ้าที่สวมใส่สบาย
+                    รองเท้าที่เหมาะกับการเดิน
+                    เตรียมหมวก แว่นกันแดด และครีมกันแดด
+                    สำหรับกิจกรรมกลางแจ้ง
+                </p>
+
+            </div>
+
+            <div class="tip-card">
+
+                <h3>💧 สิ่งของที่ควรเตรียม</h3>
+
+                <p>
+                    น้ำดื่ม ยาประจำตัว โทรศัพท์มือถือ
+                    แบตเตอรี่สำรอง เงินสดเล็กน้อย
+                    และอุปกรณ์ที่จำเป็นสำหรับการเดินทาง
+                </p>
+
+            </div>
+
+            <div class="tip-card">
+
+                <h3>🌱 การท่องเที่ยวอย่างรับผิดชอบ</h3>
+
+                <p>
+                    ไม่ทิ้งขยะในแหล่งท่องเที่ยว
+                    เคารพกฎระเบียบของสถานที่
+                    ไม่รบกวนสัตว์และธรรมชาติ
+                    รวมถึงสนับสนุนร้านค้าและชุมชนท้องถิ่น
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHECKLIST -->
+
+        <section class="checklist">
+
+            <h3>✓ เช็กลิสต์ก่อนออกเดินทาง</h3>
+
+            <label>
+                <input type="checkbox">
+                ตรวจสอบสภาพอากาศและเส้นทาง
+            </label>
+
+            <label>
+                <input type="checkbox">
+                เตรียมโทรศัพท์และแบตเตอรี่สำรอง
+            </label>
+
+            <label>
+                <input type="checkbox">
+                เตรียมหมวก ครีมกันแดด และน้ำดื่ม
+            </label>
+
+            <label>
+                <input type="checkbox">
+                ตรวจสอบเวลาเปิดให้เข้าชมสถานที่ต่าง ๆ
+            </label>
+
+            <label>
+                <input type="checkbox">
+                ตรวจสอบเงื่อนไขการเข้าชมเขาล้อมหมวก
+            </label>
+
+            <label>
+                <input type="checkbox">
+                เตรียมเงินสดและเอกสารที่จำเป็น
+            </label>
+
+        </section>
+
+
+        <!-- IMPORTANT NOTE -->
+
+        <div class="plan-note">
+
+            <strong>📌 หมายเหตุสำหรับนักท่องเที่ยว</strong><br>
+
+            กำหนดการข้างต้นเป็นตัวอย่างการวางแผนท่องเที่ยว
+            เวลาเดินทางและระยะเวลาที่ใช้ในแต่ละสถานที่
+            อาจเปลี่ยนแปลงตามสภาพการจราจร สภาพอากาศ
+            และเงื่อนไขการเข้าชมของแต่ละพื้นที่
+            ควรตรวจสอบข้อมูลล่าสุดก่อนออกเดินทาง
+            โดยเฉพาะการเข้าพื้นที่เขาล้อมหมวก
+        </div>
+
+    </main>
+
+</div>
+
+
+<footer class="plan-footer">
+    <p>
+        นางสาวลภัทร ญาณอรรถ |
+        ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ
+    </p>
+</footer>
+
+
+<script>
+(function () {
+    const descriptions = {
+        "ศาลหลักเมือง": "เยี่ยมชมสถานที่สำคัญและเรียนรู้เรื่องราวของเมือง",
+        "เขาช่องกระจก": "ชมทัศนียภาพเมืองประจวบคีรีขันธ์จากมุมสูง",
+        "อ่าวมะนาว": "พักผ่อน เดินเล่น และชมบรรยากาศชายทะเล",
+        "เขาล้อมหมวก": "สัมผัสธรรมชาติและกิจกรรมกลางแจ้ง ควรตรวจสอบเงื่อนไขการเข้าชม",
+        "สะพานปลา": "ชมวิถีชีวิตชาวประมงและบรรยากาศริมทะเล",
+        "ตลาดชุมชน": "เดินชมตลาด ชิมอาหารพื้นบ้าน และเลือกซื้อของฝาก",
+        "ร้านต่ายกาแฟโบราณ": "พักเติมพลังด้วยไข่ลวก 20 บาท พร้อมน้ำชาฟรี"
+    };
+
+    const travelGaps = {
+        car: 20,
+        motorcycle: 15,
+        public: 25,
+        walk: 30
+    };
+
+    const transportNames = {
+        car: "รถยนต์ส่วนตัว",
+        motorcycle: "รถจักรยานยนต์",
+        public: "รถโดยสาร / รถรับจ้าง",
+        walk: "เดินเท้า"
+    };
+
+    const paceFactors = {
+        relaxed: 1.2,
+        normal: 1,
+        quick: 0.8
+    };
+
+    function timeLabel(minutes) {
+        const dayMinutes = ((minutes % 1440) + 1440) % 1440;
+        const h = Math.floor(dayMinutes / 60);
+        const m = dayMinutes % 60;
+        return String(h).padStart(2, "0") + ":" +
+               String(m).padStart(2, "0") + " น.";
+    }
+
+    window.buildTripPlan = function () {
+        const selected = Array.from(
+            document.querySelectorAll('input[name="tripPlace"]:checked')
+        );
+
+        if (!selected.length) {
+            alert("กรุณาเลือกสถานที่ท่องเที่ยวอย่างน้อย 1 แห่ง");
+            return;
+        }
+
+        const startValue = document.getElementById("tripStart").value;
+        if (!startValue) {
+            alert("กรุณากำหนดเวลาเริ่มต้นเดินทาง");
+            return;
+        }
+
+        const dateValue = document.getElementById("tripDate").value;
+        const hours = Number(document.getElementById("tripHours").value);
+        const transport = document.getElementById("tripTransport").value;
+        const pace = document.getElementById("tripPace").value;
+        const [startHour, startMinute] = startValue.split(":").map(Number);
+
+        const gap = travelGaps[transport];
+        const factor = paceFactors[pace];
+        let cursor = startHour * 60 + startMinute;
+        let totalVisit = 0;
+        let schedule = "";
+
+        selected.forEach((item, index) => {
+            const baseMinutes = Number(item.dataset.minutes);
+            const duration = Math.round(baseMinutes * factor);
+            const begin = cursor;
+            const finish = begin + duration;
+
+            schedule += `
+                <div class="planner-stop">
+                    <div class="planner-stop-time">${timeLabel(begin)}</div>
+                    <div class="planner-stop-detail">
+                        <strong>${index + 1}. ${item.value}</strong>
+                        <p>${descriptions[item.value]}</p>
+                        <p>ใช้เวลาประมาณ ${duration} นาที · เสร็จประมาณ ${timeLabel(finish)}</p>
+                    </div>
+                </div>
+            `;
+
+            totalVisit += duration;
+            cursor = finish + (index < selected.length - 1 ? gap : 0);
+        });
+
+        const totalElapsed = cursor - (startHour * 60 + startMinute);
+        const available = hours * 60;
+        const dateText = dateValue
+            ? new Date(dateValue + "T00:00:00").toLocaleDateString("th-TH", {
+                day: "numeric", month: "long", year: "numeric"
+              })
+            : "ยังไม่ได้ระบุวันที่";
+
+        document.getElementById("tripIntro").textContent =
+            "วันที่ " + dateText + " · เดินทางด้วย" + transportNames[transport] +
+            " · เริ่มต้นเวลา " + startValue + " น.";
+
+        document.getElementById("tripSummary").innerHTML = `
+            <span>📍 ${selected.length} สถานที่</span>
+            <span>⏱️ เที่ยวชม ${totalVisit} นาที</span>
+            <span>🚗 เผื่อเดินทาง ${selected.length - 1} ช่วง</span>
+            <span>🏁 จบทริปประมาณ ${timeLabel(cursor)}</span>
+        `;
+
+        document.getElementById("tripSchedule").innerHTML = schedule;
+
+        let notice = "กำหนดการนี้เป็นการประเมินเวลาเบื้องต้น โดยเผื่อเวลาเดินทางระหว่างจุดตามรูปแบบการเดินทางที่เลือกแล้ว ควรตรวจสอบเส้นทางจริงและเวลาเปิดให้บริการก่อนออกเดินทาง";
+
+        if (totalElapsed > available) {
+            notice = "⚠️ เวลารวมโดยประมาณเกินระยะเวลาทริปที่เลือก (" +
+                hours + " ชั่วโมง) แนะนำให้ลดจำนวนสถานที่หรือเพิ่มระยะเวลาทริป " + notice;
+        } else {
+            notice = "✓ ตารางเวลาอยู่ภายในระยะเวลาทริปที่เลือก " + notice;
+        }
+
+        if (selected.some(item => item.value === "เขาล้อมหมวก")) {
+            notice += " สำหรับเขาล้อมหมวก โปรดตรวจสอบวันและเงื่อนไขการเปิดให้ขึ้นกับหน่วยงานผู้ดูแลก่อนเดินทาง";
+        }
+
+        document.getElementById("tripNotice").textContent = notice;
+
+        const output = document.getElementById("tripOutput");
+        output.style.display = "block";
+        output.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    window.clearTripPlan = function () {
+        document.querySelectorAll('input[name="tripPlace"]').forEach(item => {
+            item.checked = false;
+        });
+        document.getElementById("tripDate").value = "";
+        document.getElementById("tripStart").value = "08:00";
+        document.getElementById("tripHours").value = "8";
+        document.getElementById("tripTransport").value = "car";
+        document.getElementById("tripPace").value = "normal";
+        document.getElementById("tripOutput").style.display = "none";
+    };
+})();
+</script>
+
+</body>
+</html>
